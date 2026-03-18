@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "oracle-v2": {
+      "command": "/home/mbank/.local/bin/bun-linux",
+      "args": ["/home/mbank/repos/github.com/Soul-Brews-Studio/oracle-v2/src/index.ts"],
+      "env": {
+        "ORACLE_DATA_DIR": "/home/mbank/.oracle",
+        "ORACLE_REPO_ROOT": "/home/mbank/repos/github.com/BankCurfew/DocCon-Oracle"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@anthropic-ai/mcp-playwright@latest"],
+      "env": {
+        "USER_DATA_DIR": "/home/mbank/.cache/ms-playwright/mcp-chrome-doccon"
+      }
+    },
+    "gmail-mcp": {
+      "command": "/home/mbank/.local/bin/bun-linux",
+      "args": ["/home/mbank/maw-js/gmail-mcp/index.ts"]
+    }
+  }
+}
