@@ -104,7 +104,8 @@ cat ~/.oracle/SYSTEM_PLAYBOOK.md
 - [ ] Branch naming convention: `feature/xxx`, `fix/xxx`
 
 #### Communication Conduct
-- [ ] cc BoB ทุกครั้งที่คุยข้าม oracle (LAW)
+- [ ] cc BoB ทุกครั้งที่คุยข้าม oracle (LAW #1) — ไม่มีข้อยกเว้น
+- [ ] cc BoB เมื่อตอบ/เสร็จงาน — ทุกครั้ง ไม่ว่าจะตอบใครก็ตาม
 - [ ] ตอบ maw hey ภายใน 2 นาที
 - [ ] ใช้ `maw task comment` เมื่อคุยเรื่อง task (LAW #5)
 - [ ] ไม่ idle เกิน 5 นาทีหลังรับ task (LAW #2)
