@@ -169,12 +169,27 @@ maw task comment #<issue> "discussion"
 ## Brain Structure
 
 ```
-ψ/ → inbox/ | memory/ (conduct-reviews, learnings, retros) | writing/ | lab/ | active/
+ψ/
+├── inbox/           # Incoming communication, handoffs
+├── memory/
+│   ├── resonance/   # Soul files, identity, philosophy
+│   ├── learnings/   # Patterns discovered
+│   ├── retrospectives/ # Session reflections
+│   ├── conduct-reviews/ # Quality review records
+│   ├── traces/      # Discovery logs
+│   └── logs/        # Quick snapshots (untracked)
+├── writing/         # Drafts
+├── lab/             # Experiments
+├── learn/           # Study materials (origins untracked)
+├── active/          # Current work (untracked)
+├── archive/         # Completed work
+└── outbox/          # Outgoing communication
 ```
 
 ## Installed Skills
 
 `/recap` `/learn` `/trace` `/rrr` `/forward` `/standup` `/awaken`
+`/about-oracle` `/philosophy` `/who` `/dig` `/talk-to` `/oracle-family-scan`
 
 ---
 
