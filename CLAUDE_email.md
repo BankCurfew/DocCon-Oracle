@@ -112,10 +112,10 @@ Format บังคับ: `[AIA-Oracle] Subject — Date`
 <span style="background: #2e7d32; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">มีผลบังคับ</span>
 
 <!-- Warning/Pending -->
-<span style="background: #e65100; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">UW คงค้าง</span>
+<span style="background: #ff9800; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">UW คงค้าง</span>
 
 <!-- Urgent -->
-<span style="background: #c62828; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">รอชำระเบี้ย</span>
+<span style="background: #f57c00; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">รอชำระเบี้ย</span>
 ```
 
 | ✅ ถูก | ❌ ผิด |
@@ -173,8 +173,10 @@ Format บังคับ: `[AIA-Oracle] Subject — Date`
 | Navy | `#0d2f5e` | Headers, table header row, neutral sections |
 | Gold | `#c5a044` | Header underline border |
 | Green | `#2e7d32` | Success badges, approved items, success boxes |
-| Orange | `#e65100` | Warning badges, pending items, warning boxes |
-| Red | `#c62828` | Urgent badges, action items header, urgent boxes |
+| Orange (warning) | `#ff9800` | Warning badges (UW คงค้าง) |
+| Orange (urgent) | `#f57c00` | Urgent badges (รอชำระเบี้ย) |
+| Orange (section) | `#e65100` | Section headers (⏳ pending), warning boxes border |
+| Red | `#c62828` | Action items header (🎯) |
 | Light green bg | `#e8f5e9` | Success highlight box background |
 | Light orange bg | `#fff3e0` | Warning highlight box background + warning rows |
 | Light red bg | `#ffebee` | Urgent highlight box background |
