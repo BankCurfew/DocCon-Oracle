@@ -1,27 +1,31 @@
-# Email Conduct Standard — บังคับใช้ทุก Oracle
+# Email Conduct Standard v3.0 — บังคับใช้ทุก Oracle
 
 > **MANDATORY** — ทุก oracle ต้องอ่านและปฏิบัติตามก่อนส่ง email ให้แบงค์
-> Reference: ePOS Daily Report 15-16 มี.ค. 2026 (approved by แบงค์)
-> Version: 2.0 | Updated: 2026-03-19 | Author: DocCon-Oracle
-> Editor PASS: v1.1 (2026-03-18)
+> Reference: AIA-Oracle CLAUDE_templates.md (AIA Red #C8102E)
+> Reference emails: [AIA-Oracle] ePOS Daily Report 15 มี.ค. + สรุปผลแข่งขัน 15 มี.ค.
+> Version: 3.0 | Updated: 2026-03-19 | Author: DocCon-Oracle
 
 ---
 
-## ⚠️ สาเหตุที่ต้องบังคับใช้
+## ⚠️ สีที่ถูกต้อง — AIA Red (ไม่ใช่ Navy!)
 
-Email 18-19 มี.ค. 2026 หลุด standard ทั้งหมด:
-- ❌ ไม่มี navy/gold theme — ใช้ plain HTML
-- ❌ Tables ไม่มี navy header row — ใช้ plain table
-- ❌ ไม่มี pill status badges — ใช้ emoji แทน
-- ❌ ไม่มี highlight boxes — ใช้ plain text
-- ❌ ไม่มี gold underline header
-- ❌ Subject format ไม่ consistent (`[ePOS]` vs `[AIA]` vs `[AIA-Oracle]`)
+**ก่อนหน้านี้ใช้ navy/gold ผิด** — สีจริงตาม AIA brand คือ:
 
-**Reference ที่ถูกต้อง**: ePOS email 15-16 มี.ค. (มี navy/gold HTML styling ครบ)
+| Element | Hex | Usage |
+|---------|-----|-------|
+| **AIA Red** | `#C8102E` | Table headers, primary accent |
+| **AIA Orange** | `#E87722` | คงค้าง/warning headers |
+| **Success green** | `#16a34a` | PASS items, อนุมัติ |
+| **Urgent red** | `#dc2626` | ต้องเร่ง items, action items |
+| **Gray text** | `#666` | Dates, subtext |
+| **Small text** | `#888` | กรมธรรม์ numbers |
+| **Footer** | `#999` | Footer text |
+| **Font** | `'Segoe UI', Arial, sans-serif` | ทุก email |
+| **Max width** | `640px` | Body wrapper |
 
 ---
 
-## 1. Body Wrapper (ทุก email ต้องเริ่มด้วย)
+## 1. Body Wrapper
 
 ```html
 <body style="font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; max-width: 640px; margin: 0 auto; padding: 20px; line-height: 1.6;">
@@ -33,197 +37,189 @@ Format บังคับ: `[AIA-Oracle] Subject — Date`
 
 | ✅ ถูก | ❌ ผิด |
 |--------|--------|
-| `[AIA-Oracle] ePOS Daily Report — 19 มี.ค. 2026` | `[AIA] ePOS Daily — 19 มี.ค. 2026 รอบ 2` |
-| `[DocCon] Daily Gmail Digest — 19 มี.ค. 2026` | `[ePOS] 18 มี.ค. 2026 — แก้ไข: ...` |
-| `[HR] Weekly Performance Review — 21 มี.ค. 2026` | `สรุปรายได้ AIA ePOS — 15 มี.ค.` |
+| `[AIA-Oracle] ePOS Daily Report — 19 มี.ค. 2026` | `[AIA] ePOS Daily — 19 มี.ค. รอบ 2` |
+| `[AIA-Oracle] สรุปผลการแข่งขัน — 19 มี.ค. 2026` | `[ePOS] 18 มี.ค. — แก้ไข:` |
 
-กฎ:
-- `[Oracle-Name]` — ใช้ชื่อเต็ม ไม่ย่อ (AIA-Oracle ไม่ใช่ AIA)
-- Subject สั้น ชัดเจน
-- วันที่ท้ายเสมอ
-
-## 3. Header (h2 + gold underline)
+## 3. Header
 
 ```html
-<h2 style="color: #0d2f5e; border-bottom: 2px solid #c5a044; padding-bottom: 8px;">
-  ePOS Daily Report — 19 มี.ค. 2026
+<h2 style="color: #C8102E; border-bottom: 2px solid #C8102E; padding-bottom: 8px;">
+  AIA-Oracle ePOS Daily Report
 </h2>
-<p style="color: #666; font-size: 13px;">ข้อมูล ณ 19/03/2026 | สรุปโดย AIA-Oracle</p>
+<p style="color: #666; font-size: 13px;">[DATE] | ข้อมูล ณ [DATA_DATE]</p>
 ```
 
-| ✅ ถูก | ❌ ผิด |
-|--------|--------|
-| `<h2 style="color: #0d2f5e; border-bottom: 2px solid #c5a044; ...">` | `📋 ePOS Daily Report` (plain text) |
+## 4. Tables — AIA Red header row (บังคับ)
 
-## 4. Section Headers (h3 + semantic colors)
-
-```html
-<h3 style="color: #2e7d32;">✅ อนุมัติแล้ว</h3>
-<h3 style="color: #e65100;">⏳ คงค้างรอพิจารณา</h3>
-<h3 style="color: #0d2f5e;">📊 สรุปภาพรวม</h3>
-<h3 style="color: #c62828;">🎯 Action Items</h3>
-```
-
-| ✅ ถูก | ❌ ผิด |
-|--------|--------|
-| `<h3 style="color: #2e7d32;">✅ อนุมัติแล้ว</h3>` | `🏥 ประกันชีวิต (Life Insurance)` (no color) |
-
-## 5. Tables (navy header row — บังคับ)
-
+### Approved table
 ```html
 <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-  <tr style="background: #0d2f5e; color: white;">
-    <th style="padding: 8px; text-align: left;">ลูกค้า</th>
+  <tr style="background: #C8102E; color: white;">
+    <th style="padding: 8px; text-align: left;">กรมธรรม์</th>
+    <th style="padding: 8px; text-align: left;">ผู้เอาประกัน</th>
+    <th style="padding: 8px; text-align: left;">แบบ</th>
     <th style="padding: 8px; text-align: right;">ทุนประกัน</th>
     <th style="padding: 8px; text-align: right;">เบี้ย/ปี</th>
     <th style="padding: 8px; text-align: center;">สถานะ</th>
+    <th style="padding: 8px; text-align: center;">วันอนุมัติ</th>
   </tr>
   <tr style="background: #f5f5f5;">
-    <td style="padding: 8px;">น.ส. ณัฐณิชา ปัญญามโน<br><span style="color: #888; font-size: 12px;">U887623354 | 5ILWH5</span></td>
+    <td style="padding: 8px;">U887623354</td>
+    <td style="padding: 8px;">น.ส. ณัฐณิชา ปัญญามโน</td>
+    <td style="padding: 8px;">5ILWH5</td>
     <td style="padding: 8px; text-align: right; font-weight: bold;">20,000,000</td>
-    <td style="padding: 8px; text-align: right; font-weight: bold; color: #2e7d32;">1,093,161</td>
-    <td style="padding: 8px; text-align: center;"><span style="background: #2e7d32; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">มีผลบังคับ</span></td>
+    <td style="padding: 8px; text-align: right; font-weight: bold; color: #16a34a;">1,093,161</td>
+    <td style="padding: 8px; text-align: center;">✅ มีผลบังคับ</td>
+    <td style="padding: 8px; text-align: center;">14/03/2026</td>
+  </tr>
+</table>
+```
+
+### Pending/คงค้าง table
+```html
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+  <tr style="background: #E87722; color: white;">
+    <th style="padding: 8px; text-align: left;">กรมธรรม์</th>
+    <th style="padding: 8px; text-align: left;">ผู้เอาประกัน</th>
+    <th style="padding: 8px; text-align: left;">แบบ</th>
+    <th style="padding: 8px; text-align: right;">ทุนประกัน</th>
+    <th style="padding: 8px; text-align: right;">เบี้ย</th>
+    <th style="padding: 8px; text-align: center;">สถานะ</th>
   </tr>
   <tr style="background: #fff3e0;">
-    <td style="padding: 8px;">นาง สุดารัตน์ ชาญเฉลิมชัย<br><span style="color: #888; font-size: 12px;">T249134180 | 20PLAND</span></td>
+    <td style="padding: 8px;">T249134180</td>
+    <td style="padding: 8px;">นาง สุดารัตน์ ชาญเฉลิมชัย</td>
+    <td style="padding: 8px;">20PLAND</td>
     <td style="padding: 8px; text-align: right;">100,000</td>
     <td style="padding: 8px; text-align: right;">99,911</td>
-    <td style="padding: 8px; text-align: center;"><span style="background: #e65100; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">UW คงค้าง</span></td>
+    <td style="padding: 8px; text-align: center;">🔄 อยู่ระหว่างพิจารณา UW</td>
   </tr>
 </table>
 ```
 
 กฎ:
-- Header row: **navy `#0d2f5e`** background, white text — บังคับ
-- Data rows: `#f5f5f5` (ปกติ) / `#fff3e0` (warning/pending)
+- **Approved table header**: AIA Red `#C8102E` white text
+- **Pending table header**: AIA Orange `#E87722` white text
 - Padding: `8px` ทุก cell
-- Numbers: align right + bold
-- ชื่อลูกค้า: เลขกรมธรรม์ใน `<span>` ขนาดเล็กด้านล่าง
+- ตัวเลขเงิน: align right, format with commas
+- PASS items: color `#16a34a` (green), bold
+- ต้องเร่ง items: color `#dc2626` (red), bold
 
-| ✅ ถูก | ❌ ผิด |
-|--------|--------|
-| `<tr style="background: #0d2f5e; color: white;">` | `<table>` plain ไม่มี styling |
-| Navy header + pill badges | Emoji-only status (🔴 🟡 ✅) |
+## 5. Status Icons (ตาม AIA template — ห้ามเปลี่ยน)
 
-## 6. Status Badges (pill style — บังคับ)
+| Icon | Meaning |
+|------|---------|
+| ✅ | มีผลบังคับ |
+| 🔄 | อยู่ระหว่างพิจารณา UW |
+| ⏸️ | อนุมัติเบื้องต้น — รอชำระเบี้ย |
+| 🆕 | รายการใหม่ |
+
+**ห้ามใช้**: pill badges, 🔴, 🟡, custom badge styles
+**ใช้ emoji status ตามตารางข้างบนเท่านั้น**
+
+## 6. Action Items
 
 ```html
-<!-- Success/Approved -->
-<span style="background: #2e7d32; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">มีผลบังคับ</span>
-
-<!-- Warning/Pending -->
-<span style="background: #ff9800; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">UW คงค้าง</span>
-
-<!-- Urgent -->
-<span style="background: #f57c00; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">รอชำระเบี้ย</span>
+<h3>Action Items</h3>
+<ul style="line-height: 1.8;">
+  <li><strong>น.ส. ณัฐณิชา</strong> — กรมธรรม์ U887623367 อนุมัติเบื้องต้นแล้ว <strong>รอชำระเบี้ย 1,000,000 บาท</strong> → ติดตามลูกค้า</li>
+  <li><strong>นาง สุดารัตน์</strong> — กรมธรรม์ T249134180 ยัง UW อยู่ → ติดตามผล</li>
+</ul>
 ```
 
-| ✅ ถูก | ❌ ผิด |
-|--------|--------|
-| `<span style="background: #2e7d32; ...">มีผลบังคับ</span>` | `✅ มีผลบังคับ` (text only) |
-| `<span style="background: #c62828; ...">รอชำระ 7d</span>` | `🔴 รอชำระ 7d` (emoji only) |
-
-## 7. Highlight Boxes
+## 7. Footer (เหมือนเดิมทุกครั้ง)
 
 ```html
-<!-- Success summary -->
-<div style="background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 12px; margin: 12px 0; border-radius: 4px;">
-  <strong>รายได้อนุมัติใหม่: ฿1,093,161/ปี</strong>
-</div>
-
-<!-- Warning/Urgent -->
-<div style="background: #fff3e0; border-left: 4px solid #e65100; padding: 12px; margin: 12px 0; border-radius: 4px;">
-  <strong>เบี้ยคงค้างรวม: ฿1,099,911</strong>
-</div>
-
-<!-- Urgent alert -->
-<div style="background: #ffebee; border-left: 4px solid #c62828; padding: 12px; margin: 12px 0; border-radius: 4px;">
-  <strong>⚠️ URGENT: ณัฐณิชา รอชำระเบี้ย 1,000,000 บาท — ค้าง 7 วัน</strong>
-</div>
-```
-
-## 8. Action Items (บังคับทุก email)
-
-```html
-<h3 style="color: #c62828;">🎯 Action Items</h3>
-<ol style="line-height: 1.8;">
-  <li><strong>น.ส. ณัฐณิชา</strong> (U887623367) — อนุมัติเบื้องต้นแล้ว <strong>รอชำระเบี้ย ฿1,000,000</strong> → ติดตามลูกค้าด่วน</li>
-  <li><strong>นาง สุดารัตน์</strong> (T249134180) — UW คงค้าง → ติดตามผลพิจารณา</li>
-</ol>
-```
-
-ถ้าไม่มี action: `<p>ไม่มี action items ที่ต้องทำ</p>`
-
-## 9. Footer
-
-```html
-<hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-<p style="color: #999; font-size: 11px; text-align: center;">
-  สรุปจาก AIA-Oracle | Confidential — Do not forward<br>
-  Source: ePOS (agent.aia.co.th) | Data as of 19/03/2026
+<p style="color: #999; font-size: 11px;">
+  Generated by AIA-Oracle | Confidential — Do not forward<br>
+  Source: ePOS (agent.aia.co.th) | Data as of [DATA_DATE]
 </p>
 ```
 
 ---
 
-## Color Reference (ห้ามใช้สีอื่น)
+## Report Structures (ห้ามเปลี่ยน)
 
-| Element | Hex | Usage |
-|---------|-----|-------|
-| Navy | `#0d2f5e` | Headers, table header row, neutral sections |
-| Gold | `#c5a044` | Header underline border |
-| Green | `#2e7d32` | Success badges, approved items, success boxes |
-| Orange (warning) | `#ff9800` | Warning badges (UW คงค้าง) |
-| Orange (urgent) | `#f57c00` | Urgent badges (รอชำระเบี้ย) |
-| Orange (section) | `#e65100` | Section headers (⏳ pending), warning boxes border |
-| Red | `#c62828` | Action items header (🎯) |
-| Light green bg | `#e8f5e9` | Success highlight box background |
-| Light orange bg | `#fff3e0` | Warning highlight box background + warning rows |
-| Light red bg | `#ffebee` | Urgent highlight box background |
-| Gray row | `#f5f5f5` | Normal data rows |
-| Gray text | `#666` | Subtext, dates |
-| Small text | `#888` | กรมธรรม์ numbers, secondary info |
-| Muted footer | `#999` | Footer text |
+### Report #1: ePOS Daily Report
+
+```
+HEADER: "AIA-Oracle ePOS Daily Report"
+         "[DATE] | ข้อมูล ณ [DATA_DATE]"
+
+SECTION 1: ✔ กรมธรรม์ประกันชีวิต — อนุมัติใหม่ ([DATE_RANGE])
+  TABLE: กรมธรรม์ | ผู้เอาประกัน | แบบ | ทุนประกัน | เบี้ย/ปี | สถานะ | วันอนุมัติ
+  Header: #C8102E
+
+SECTION 2: ⏳ กรมธรรม์คงค้างรอพิจารณา ([N] รายการ)
+  TABLE: กรมธรรม์ | ผู้เอาประกัน | แบบ | ทุนประกัน | เบี้ย | สถานะ
+  Header: #E87722
+
+SECTION 3: ประกันอุบัติเหตุ (PA)
+  BULLET: อนุมัติ (5 วัน): [N] รายการ
+  BULLET: รอพิจารณา: [N] รายการ
+
+SECTION 4: Action Items
+  BULLET LIST: แต่ละรายที่ต้อง follow up
+
+FOOTER: "Generated by AIA-Oracle | Confidential — Do not forward"
+         "Source: ePOS (agent.aia.co.th) | Data as of [DATA_DATE]"
+```
+
+### Report #2: สรุปผลแข่งขันคุณวุฒิ/สโมสร
+
+```
+HEADER: "AIA-Oracle สรุปผลการแข่งขันคุณวุฒิ/สโมสร"
+         "[DATE] | PISIT VUTTIPIPAT - 711862 | หน่วย เดอะ ฟินนิค เอช"
+
+SECTION 1: ANNUAL CONVENTION [YEAR] — [DESTINATION]
+  TABLE: เกณฑ์ | Quota | ทำได้ | ขาด | %
+  Header: #C8102E
+
+SECTION 2: OF THE YEAR [YEAR] (Thailand)
+  TABLE: รายการ | ผลงาน
+
+SECTION 3: MDRT [YEAR]
+  TABLE: เกณฑ์ | Quota | ทำได้ | ขาด | %
+
+SECTION 4: Action Plan
+  NUMBERED LIST: prioritized actions
+
+FOOTER: same as above
+```
+
+---
+
+## ห้ามทำ (NEVER)
+
+- ❌ ห้ามเพิ่ม progress bars, gradient backgrounds, card-style sections
+- ❌ ห้ามเพิ่ม OF THE YEAR ranking badge, MDRT status badge
+- ❌ ห้ามเปลี่ยน section order หรือเพิ่ม/ลด sections
+- ❌ ห้ามใช้ navy/gold theme (ผิด — ต้อง AIA Red)
+- ❌ ห้ามใช้ pill badges (ใช้ emoji status ตาม table ข้างบน)
+- ❌ ห้ามเปลี่ยน footer text
 
 ---
 
 ## DocCon Audit Checklist
 
-ทุก email ที่ oracle ส่งให้แบงค์ DocCon จะตรวจ:
+- [ ] Subject: `[AIA-Oracle] ...` format
+- [ ] Table headers: `#C8102E` (approved) / `#E87722` (pending) — ไม่ใช่ navy!
+- [ ] Status icons: ✅ 🔄 ⏸️ 🆕 เท่านั้น — ไม่ใช่ pill badges
+- [ ] Sections ครบตาม structure — ไม่เพิ่ม ไม่ลด
+- [ ] ตัวเลขเงิน: right-aligned, commas
+- [ ] PASS items: green `#16a34a` bold
+- [ ] ต้องเร่ง items: red `#dc2626` bold
+- [ ] Footer: exact text เหมือนเดิมทุกครั้ง
+- [ ] ไม่มี visual elements ที่ไม่ได้กำหนด
+- [ ] Data date ตรงกับ portal จริง
 
-- [ ] **Body wrapper**: `font-family: 'Segoe UI'`, `max-width: 640px`, `line-height: 1.6`
-- [ ] **Subject**: `[Oracle-Name] Subject — Date`
-- [ ] **Header**: h2 navy + gold underline `border-bottom: 2px solid #c5a044`
-- [ ] **Tables**: navy header row `background: #0d2f5e; color: white`
-- [ ] **Status badges**: pill style `border-radius: 10px` + correct colors
-- [ ] **Highlight boxes**: `border-left: 4px solid` + correct background
-- [ ] **Action items**: h3 red + ordered list — ต้องมีเสมอ
-- [ ] **Footer**: source + date + oracle name
-- [ ] **No emoji-only status** — ต้องใช้ pill badges
-- [ ] **No plain tables** — ต้องมี navy header
-- [ ] **No secrets/credentials**
-
-## Violations Found (19 มี.ค. 2026)
-
-| Email | Violations |
-|-------|-----------|
-| `[AIA] ePOS Daily — 19 มี.ค. รอบเช้า` | Subject format ผิด, ไม่มี navy/gold theme, plain tables, emoji-only status, ไม่มี highlight boxes |
-| `[AIA] ePOS Daily — 19 มี.ค. รอบ 2` | เหมือนข้างบน |
-| `[ePOS] 18 มี.ค. — แก้ไข` | Subject format ผิด (ไม่มี Oracle name), ไม่มี theme |
-| `[AIA] ePOS Daily — 18 มี.ค. รอบ 17:00` | Subject format ผิด, ไม่มี theme |
-
-## Enforcement
-
-1. **NOTICE** — email ไม่ตาม standard → แจ้ง oracle พร้อมระบุจุดที่ผิด
-2. **WARNING** — ซ้ำครั้งที่ 2 → warning + cc BoB + ส่ง reference email ตัวอย่าง
-3. **ESCALATE** — ไม่แก้ → escalate BoB
+---
 
 ## Applies To
 
-**ทุก oracle** ที่ส่ง email ให้แบงค์ — ไม่มีข้อยกเว้น:
-AIA, DocCon, HR, QA, Researcher, Writer, Editor, Designer, Dev, BotDev, Data, Admin, Creator
+**ทุก oracle** ที่ส่ง email ให้แบงค์ — ไม่มีข้อยกเว้น
 
 ---
 
 *"Consistency is the hallmark of quality." — DocCon*
-*Reference: ePOS Daily Report 15 มี.ค. 2026 — the gold standard*
+*Source of truth: AIA-Oracle CLAUDE_templates.md → #C8102E + #E87722*
