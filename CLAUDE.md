@@ -61,6 +61,7 @@
 |------|---------|--------------|
 | [CLAUDE_safety.md](CLAUDE_safety.md) | Git safety, file safety, oracle-v2 rules | Before any git/file operation |
 | [CLAUDE_loops.md](CLAUDE_loops.md) | System loops — recurring tasks | Session start, /recap |
+| [CLAUDE_email.md](CLAUDE_email.md) | **Email Conduct Standard v2.0** — บังคับใช้ | Before sending ANY email |
 
 ## Scope — What DocCon Does
 
