@@ -13,18 +13,19 @@
 
 ## ⚠️ THE LAW (ห้ามละเมิด — อ่านก่อนทำอะไรทุกอย่าง)
 
-### 1. maw hey คือวิธีเดียวในการคุยกับ oracle อื่น
-- ต้องการคุยกับใคร → `maw hey <oracle> "message"` เสมอ
-- ห้ามแค่คิดว่าจะส่ง — ต้อง run `maw hey` จริงๆ ทุกครั้ง
-- cc BoB ทุกครั้ง: `maw hey bob "cc: [สิ่งที่ทำ]"`
+### 1. /talk-to คือวิธีหลักในการคุยกับ oracle อื่น
+- ต้องการคุยกับใคร → `/talk-to <oracle> "message"` เป็นวิธีหลัก
+- `/talk-to` สร้าง audit trail ใน Oracle thread — แบงค์และ BoB ตรวจสอบได้
+- ถ้า `/talk-to` ใช้ไม่ได้ (MCP ล่ม) → fallback ใช้ `maw hey <oracle> "message"`
+- cc BoB ทุกครั้ง: `/talk-to bob "cc: [สิ่งที่ทำ]"`
 
 ### 2. ห้าม IDLE — ได้รับ task แล้วทำจนเสร็จ
 - ได้รับ task → **ทำเลย** ห้ามถามว่า "ให้ทำไหม?"
-- ทำเสร็จ → `maw hey <ผู้สั่ง> "เสร็จแล้ว — สรุป: ..."` ทันที
-- ติดปัญหา → `maw hey <ผู้สั่ง> "ติดปัญหา — ต้องการ X"` ทันที อย่ารอ
+- ทำเสร็จ → `/talk-to <ผู้สั่ง> "เสร็จแล้ว — สรุป: ..."` ทันที
+- ติดปัญหา → `/talk-to <ผู้สั่ง> "ติดปัญหา — ต้องการ X"` ทันที อย่ารอ
 
 ### 3. ตอบทุกข้อความ — ห้ามเงียบ
-- oracle อื่นส่ง `maw hey` มา → **ต้องตอบกลับเสมอ**
+- oracle อื่นส่ง `/talk-to` หรือ `maw hey` มา → **ต้องตอบกลับเสมอ**
 - ตอบ, ทำ, หรือ push back ก็ได้ — แต่ห้ามเพิกเฉย
 
 ### 4. Playwright = ทางออกสุดท้าย — ถ้า MCP/API ไม่ผ่าน ใช้ browser
@@ -43,6 +44,16 @@
 ### 6. System Playbook — อ่านทุกครั้งที่ Wake
 - **ทุก session ใหม่** ต้องอ่าน `~/.oracle/SYSTEM_PLAYBOOK.md` ก่อนทำอะไร
 - Command: `cat ~/.oracle/SYSTEM_PLAYBOOK.md`
+
+### 7. ห้ามใช้ CronCreate — ใช้ maw loop add แทน
+- ต้องการ scheduled/recurring task → `maw loop add '{json}'` หรือ HTTP `POST /api/loops/add`
+- **CronCreate หายเมื่อ restart session** — ไม่ persist, ไม่แสดงบน dashboard
+- `maw loop add` → persist ข้าม session, แสดงบน dashboard (#loops), มี history log
+- ตัวอย่าง:
+  ```bash
+  maw loop add '{"id":"my-check","oracle":"dev","tmux":"02-dev:0","schedule":"0 9 * * *","prompt":"ตรวจ X แล้ว report","requireIdle":true,"enabled":true,"description":"Daily X check"}'
+  ```
+- ดูสถานะ: `maw loop` | trigger manual: `maw loop trigger <id>`
 
 ## Navigation
 
@@ -159,8 +170,14 @@ maw hey bob "DocCon Daily Report:
 ## Team Communication
 
 ```bash
+# Primary — /talk-to (has audit trail)
+/talk-to <oracle> "message"
+/talk-to bob "cc: [action]"
+
+# Fallback — maw hey (when /talk-to MCP is unavailable)
 maw hey <oracle> "message"
-maw hey bob "cc: [action]"
+
+# Task management
 maw task log #<issue> "what I did"
 maw task comment #<issue> "discussion"
 ```
