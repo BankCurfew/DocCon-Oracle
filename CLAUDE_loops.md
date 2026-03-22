@@ -20,7 +20,13 @@
      done
      ```
   4. Flag violations ถ้าพบ
-- **Output**: conduct notes → ψ/memory/conduct-reviews/
+  5. **GOLDEN RULE audit** (Zero Dropped Balls):
+     - ตรวจ oracle threads: handoff มี /talk-to + cc bob ครบ chain ไหม
+     - ตรวจ maw-log: มี oracle ไหนได้ /talk-to แล้วไม่ตอบ (> 2 นาที)
+     - ตรวจ session end: มี task ค้างที่ไม่ได้ handoff ไหม
+     - ตรวจ done reports: oracle ทำเสร็จแล้วไม่ /talk-to bob "done" ไหม
+     - Flag violations ใน daily report ให้ BoB + แบงค์เห็น
+- **Output**: conduct notes + GOLDEN RULE violations → ψ/memory/conduct-reviews/
 - **Status**: active
 
 ### 2. doccon-loop-followup ⚙️ SYSTEM
@@ -106,6 +112,27 @@
   4. สรุป violations + actions taken
   5. `maw hey bob "DocCon Daily Report: ..."`
 - **Output**: daily report → maw hey bob + ψ/memory/logs/
+- **Status**: active
+
+### 7. doccon-conduct-audit ⚙️ SYSTEM (maw loop)
+- **Type**: system (persisted via `maw loop add`)
+- **Schedule**: `0 10,14,18 * * *` (10:00, 14:00, 18:00 ทุกวัน)
+- **Action**: Full conduct audit — emails, commits, threads, loops
+- **Output**: audit record → ψ/memory/conduct-reviews/ + report BoB thread #6
+- **Status**: active
+
+### 8. doccon-email-gate ⚙️ SYSTEM (maw loop)
+- **Type**: system (persisted via `maw loop add`)
+- **Schedule**: `0 9,13,17 * * *` (09:00, 13:00, 17:00 ทุกวัน)
+- **Action**: Scan all oracle-sent emails — format, color (#C8102E), accuracy, tone
+- **Output**: violations → NOTICE oracle + cc bob
+- **Status**: active
+
+### 9. doccon-followup-tracker ⚙️ SYSTEM (maw loop)
+- **Type**: system (persisted via `maw loop add`)
+- **Schedule**: `0 11 * * *` (11:00 ทุกวัน)
+- **Action**: Check enforcement notices — did oracle act? NOTICE→WARNING→ESCALATE
+- **Output**: update ψ/memory/conduct-reviews/followup-tracker.md
 - **Status**: active
 
 ---
